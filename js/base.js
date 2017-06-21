@@ -65,18 +65,15 @@ function setData(data) {
 function listSlider() {
     $(".menuTop").eq(0).addClass('active').next(".dataBar").slideDown();
     $(".ico").first().attr("class", "glyphicon glyphicon-menu-down pull-right ico");
-    $(".menuTop").on("click", function() {
+    $(document).on("click",".menuTop", function() {
         var display = $(this).siblings('.dataBar').css('display');
         if (display == "none") {
-            $(this).children(".ico").attr("class", "glyphicon glyphicon-menu-down pull-right ico");
+            $(this).find(".ico").attr("class", "glyphicon glyphicon-menu-down pull-right ico");
             $(this).parent().siblings('.menu').children('.menuTop').find(".ico").attr("class", "glyphicon glyphicon-menu-up pull-right ico");
-        } else {
-            $(this).children(".ico").attr("class", "glyphicon glyphicon-menu-down pull-right ico");
-            $(this).parent().siblings('.menu').children('.menuTop').find(".ico").attr("class", "glyphicon glyphicon-menu-up pull-right ico")
         }
-        $(this).parent().siblings(".menu").children('.dataBar').slideUp();
+        $(this).parent().siblings(".menu").find('.dataBar').slideUp();
         $(this).next('.dataBar').slideDown();
-        $(this).parent().siblings('.menu').children('.menuTop').removeClass('active');
+        $(this).parent().siblings('.menu').find('.menuTop').removeClass('active');
         $(this).addClass('active');
         if ($(this).attr("href")) {
             //路径导航
@@ -110,6 +107,7 @@ function reading(path) {
 }
 
 function packToggle() {
+
     var tag = 0;
     $(".sidebar-toggle").on('click', function(event) {
         if (tag % 2 == 0) {
@@ -191,13 +189,14 @@ function packToggle() {
             $(".treeview.act").parent(".dataBar").show().siblings('.menuTop').addClass('active').children(".ico").attr("class", "glyphicon glyphicon-menu-down ico pull-right");
             if (!$(".treeview").hasClass('act')) {
                 $(".menuTop").eq(0).addClass('active').next(".dataBar").show();
-                $(".menuTop.active").children(".ico").attr("class", "glyphicon glyphicon-menu-down pull-right ico");
             }
+            $(".menuTop.active").find(".ico").attr("class", "glyphicon glyphicon-menu-down pull-right ico");
             $(".menuName").css("margin-left", "5px");
             $(".menu").unbind("mouseenter").unbind("mouseleave");
         }
         $(".header-main").width($(".header").width() - $(".logo").width());
         tag++;
+
     });
 }
 
