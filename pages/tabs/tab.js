@@ -90,6 +90,10 @@
 					}
 				});
 			}
+			$('.tabs-tab-content').off('click').on('click', function(event) {
+				event.preventDefault();
+				return false;
+			    });
 		},
 		//添加
 		addTab: function(title,content){
